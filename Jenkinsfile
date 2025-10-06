@@ -13,7 +13,7 @@ pipeline {
     stage('Validate') {
       steps {
         sh '''
-          set -euo pipefail
+          set -euo 
           echo "No linters configured yet; skipping."
         '''
       }
@@ -21,7 +21,7 @@ pipeline {
     stage('Package') {
       steps {
         sh '''
-          set -euo pipefail
+          set -euo 
           rm -rf "${BUILD_DIR}"
           mkdir -p "${BUILD_DIR}"
           cp -r "${SITE_DIR}/." "${BUILD_DIR}/"
@@ -32,7 +32,7 @@ pipeline {
     stage('Deploy to Nginx') {
       steps {
         sh '''
-          set -euo pipefail
+          set -euo 
           mkdir -p "${DEPLOY_DIR}"
           rm -rf "${DEPLOY_DIR:?}/"*
           cp -r "${BUILD_DIR}/." "${DEPLOY_DIR}/"
